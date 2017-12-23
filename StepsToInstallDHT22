@@ -1,0 +1,70 @@
+// steps to install dht22 temperature and humidity sensor on raspberry pi
+// operating system must be debian
+// this code was tested on Rasoberry pi 3
+
+
+Start by updating and upgrading the Raspberry Pi. 
+Type following and press enter.
+
+sudo apt-get update
+
+This updates software sources then type following and press enter.
+
+sudo apt-get upgrade
+
+This updates to everything to latest version. If prompted to continue press "Y".
+When these are finished, it is time to install Adafruit Python code.
+You will need this code in order to get readings from DHT22 sensors. 
+This will also allow you to test that your assembly works in first place.
+At first, get compiler and python library. For that type following and press enter
+
+sudo apt-get install build-essential python-dev python-openssl
+
+Then, make sure that you are in folder where you want to install the Adafruit code, by default i would suggest /home/. For that type following and press enter.
+
+cd /home/pi
+
+Now clone the git repository. Type following and press enter.
+
+git clone https://github.com/adafruit/Adafruit_Python_DHT.g...
+
+Go to folder.Type following and press enter.
+
+cd Adafruit_Python_DHT
+
+And finally install the Adafruit library. Type following and press enter.
+
+sudo python setup.py install
+
+Then it is time to test your assembly...
+Step 8: Testing the DHT22's
+Now that installation is completed you can test the connected sensor/s and s
+ee that you get reading from them. Go to folder where you cloned 
+the Adafruit_Python_DHT and then to examples folder. Type following and press enter.
+
+cd /home/pi/Adafruit_Python_DHT/examples
+
+You remember the gpio/s where you plugged the sensor/s? Good, 
+then type sudo ./AdafruitDHT.py and press enter. I had gpio 22 and 23 so I tested with
+
+sudo ./AdafruitDHT.py 22 22
+
+sudo ./AdafruitDHT.py 22 23
+
+If your sensor and assembly is ok, you should get back temperature 
+and humidity from the sensor/s. Like seen in attached image.
+
+NOTE:
+
+If you see "Failed to get reading. Try again!", then try again few times.
+
+If still nothing, re-check that you typed in the right GPIO.
+
+If gpio is for sure right, check your assembly again. E.g. 
+DHT22 gets power, ground and resistor is connected correctly.
+
+If all above are right, try to connect your sensor to another GPIO and see if you get reading from that
+
+If nothing from above works, it is always possible that your DHT22 is broken. :(
+
+Libraries for DHT22 sensors are now installed and you can get the readings from sensor/s. 
